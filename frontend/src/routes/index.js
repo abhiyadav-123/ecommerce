@@ -11,6 +11,9 @@ import CategoryProduct from '../pages/CategoryProduct'
 import ProductDetails from '../pages/ProductDetails'
 import Cart from '../pages/Cart'
 import SearchProduct from '../pages/SearchProduct'
+import About from '../pages/About'
+import Contact from '../pages/Contact'
+import GitHub from '../pages/Github'
 
 const router = createBrowserRouter([
     {
@@ -48,6 +51,18 @@ const router = createBrowserRouter([
             {
                 path : "search",
                 element : <SearchProduct/>
+            },
+            {
+                path : "about",
+                element : <About/>
+            }, 
+            {
+                path : "contact",
+                element : <Contact/>
+            }, 
+            {
+                path : "github",
+                element : <GitHub/>
             },
             {
                 path : "admin-panel",

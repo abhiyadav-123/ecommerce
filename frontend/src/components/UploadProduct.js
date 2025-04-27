@@ -33,7 +33,7 @@ const UploadProduct = ({
           ...preve,
           [name]  : value
         }
-      })
+      }) 
   }
 
   const handleUploadProduct = async(e) => {

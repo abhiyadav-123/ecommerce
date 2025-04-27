@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import loginIcons from '../assest/signin.gif';
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import imageTobase64 from '../helpers/ImageTobase64';
 import SummaryApi from '../common';
@@ -28,13 +28,10 @@ const SignUp = () => {
 
     const handleUploadPic = async (e) => {
         const file = e.target.files[0];
-
-        // Check file size (in bytes) - limit set to 5MB
         if (file.size > 5 * 1024 * 1024) {
             toast.error("File size exceeds 5MB limit");
             return;
         }
-
         const imagePic = await imageTobase64(file);
         setData((prev) => ({
             ...prev,
@@ -95,9 +92,11 @@ const SignUp = () => {
                     </div>
 
                     <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
+                        {/* Name Input */}
                         <div className='grid'>
                             <label>Name:</label>
-                            <div className='bg-slate-100 p-2'>
+                            <div className='bg-slate-100 p-2 flex items-center gap-2'>
+                                <FaUser className='text-gray-400' />
                                 <input
                                     type='text'
                                     placeholder='Enter your name'
@@ -109,9 +108,12 @@ const SignUp = () => {
                                 />
                             </div>
                         </div>
+
+                        {/* Email Input */}
                         <div className='grid'>
                             <label>Email:</label>
-                            <div className='bg-slate-100 p-2'>
+                            <div className='bg-slate-100 p-2 flex items-center gap-2'>
+                                <FaEnvelope className='text-gray-400' />
                                 <input
                                     type='email'
                                     placeholder='Enter email'
@@ -124,9 +126,11 @@ const SignUp = () => {
                             </div>
                         </div>
 
-                        <div>
+                        {/* Password Input */}
+                        <div className='grid'>
                             <label>Password:</label>
-                            <div className='bg-slate-100 p-2 flex'>
+                            <div className='bg-slate-100 p-2 flex items-center gap-2'>
+                                <FaLock className='text-gray-400' />
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     placeholder='Enter password'
@@ -142,9 +146,11 @@ const SignUp = () => {
                             </div>
                         </div>
 
-                        <div>
+                        {/* Confirm Password Input */}
+                        <div className='grid'>
                             <label>Confirm Password:</label>
-                            <div className='bg-slate-100 p-2 flex'>
+                            <div className='bg-slate-100 p-2 flex items-center gap-2'>
+                                <FaLock className='text-gray-400' />
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
                                     placeholder='Enter confirm password'

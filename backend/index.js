@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const connectDB = require('./config/db')
 const router = require('./routes')
+const path = require('path')
+
+const _dirname = path.resolve();
 
 
 const app = express()
@@ -15,8 +18,12 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use("/api",router)
+app.use(express.static(path.join(_dirname,'/frontend/build')));
+app.get('*',(_,res)=>{
+    res.sendFile(path.resolve(_dirname,"frontend","dist","index.html"));
+})
 
-const PORT = 8080 || process.env.PORT
+const PORT = 8080 || process.env.REACT_APP_BACKEND_URL
 
 
 connectDB().then(()=>{
